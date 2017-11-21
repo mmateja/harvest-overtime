@@ -38,10 +38,12 @@ class HarvestClient
   end
 
   def time_entries(from_date, to_date)
+    user_id = get_user_id
+
     entries = []
 
     print 'Retrieving data .'
-    response = faraday.get('time_entries', from: from_date.iso8601, to: to_date.iso8601)
+    response = faraday.get('time_entries', user_id: user_id, from: from_date.iso8601, to: to_date.iso8601)
     body_hash = parse_response(response)
     entries.concat(body_hash['time_entries'])
 
@@ -65,6 +67,14 @@ class HarvestClient
   private
 
   attr_reader :faraday
+
+  def get_user_id
+    response = faraday.get('users/me')
+
+    response_body_hash = parse_response(response)
+
+    response_body_hash['id']
+  end
 
   def parse_response(response)
     raise "REQUEST ERROR: #{response.body}" unless response.success?
