@@ -88,7 +88,7 @@ stats = []
 
 non_zero_entries.group_by { |entry| Month.from_date(entry.date) }.each do |month, entries|
   business_hours = business_days_by_month[month].size * 8
-  billed_hours = entries.map(&:hours).reduce(&:+).round(1)
+  billed_hours = entries.map(&:hours).reduce(&:+)
 
   stats << MonthStats.new(month, business_hours, billed_hours)
 end
@@ -98,7 +98,7 @@ stats.each do |s|
   puts [
          s.month,
          s.business_hours,
-         s.billed_hours,
+         s.billed_hours.round(1),
          s.overtime.round(1)
        ].join("\t")
 end
