@@ -1,0 +1,40 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require 'harvest_overtime'
+require 'active_support/time'
+
+ACCOUNT_ID_ENV_VAR = 'HARVEST_ACCOUNT_ID'
+TOKEN_ENV_VAR = 'HARVEST_TOKEN'
+COLUMN_SIZE = 20
+
+def print_in_columns(array, column_size)
+  puts array.map { |e| e.to_s.ljust(column_size, ' ') }.join
+end
+
+harvest_account_id = ENV[ACCOUNT_ID_ENV_VAR]
+harvest_personal_access_token = ENV[TOKEN_ENV_VAR]
+number_of_months = ARGV[0]&.to_i || 3
+
+unless harvest_account_id && harvest_personal_access_token
+  puts "#{ACCOUNT_ID_ENV_VAR} and #{TOKEN_ENV_VAR} environment variables must be set to use #{__FILE__} script!\n\n" \
+       "usage: #{__FILE__} [number_of_months]"
+  exit(1)
+end
+
+end_date = Date.yesterday
+start_date = (end_date - (number_of_months - 1).months).beginning_of_month
+
+overtime = HarvestOvertime.new(account_id: harvest_account_id, personal_access_token: harvest_personal_access_token)
+per_month_stats = overtime.monthly_stats(start_date, end_date)
+
+print_in_columns(['Month', 'Business hours', 'Billed hours', 'Overtime'], COLUMN_SIZE)
+per_month_stats.each do |month, stats|
+  print_in_columns([month, stats.business_hours, stats.billed_hours.round(1), stats.overtime.round(1)], COLUMN_SIZE)
+end
+
+unless per_month_stats.empty?
+  total_overtime = per_month_stats.values.map(&:overtime).reduce(&:+)
+
+  puts "\nTotal overtime: #{total_overtime.round(1)} hour(s) -> #{(total_overtime / 8).floor} day(s)"
+end
