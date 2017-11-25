@@ -1,5 +1,6 @@
 [![Gem Version](https://badge.fury.io/rb/harvest_overtime.svg)](https://badge.fury.io/rb/harvest_overtime)
 [![Build Status](https://travis-ci.org/mmateja/harvest_overtime.svg?branch=master)](https://travis-ci.org/mmateja/harvest_overtime)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/414a5c6c84e7059db5b2/test_coverage)](https://codeclimate.com/github/mmateja/harvest_overtime/test_coverage)
 [![Maintainability](https://api.codeclimate.com/v1/badges/414a5c6c84e7059db5b2/maintainability)](https://codeclimate.com/github/mmateja/harvest_overtime/maintainability)
 
 # harvest_overtime
