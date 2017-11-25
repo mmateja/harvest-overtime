@@ -1,3 +1,4 @@
+[![Gem Version](https://badge.fury.io/rb/harvest_overtime.svg)](https://badge.fury.io/rb/harvest_overtime)
 [![Build Status](https://travis-ci.org/mmateja/harvest_overtime.svg?branch=master)](https://travis-ci.org/mmateja/harvest_overtime)
 
 # harvest_overtime
