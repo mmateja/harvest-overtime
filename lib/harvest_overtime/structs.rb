@@ -10,11 +10,7 @@ Month = Struct.new(:year, :month) do
   end
 end
 
-TimeEntry = Struct.new(:date, :hours) do
-  def month
-    Month.new(date.year, date.month)
-  end
-end
+TimeEntry = Struct.new(:date, :hours)
 
 TimeStats = Struct.new(:business_hours, :billed_hours) do
   def overtime
