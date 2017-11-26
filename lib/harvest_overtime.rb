@@ -2,7 +2,9 @@
 
 require 'date'
 
-require_relative 'harvest_overtime/structs'
+require_relative 'harvest_overtime/month'
+require_relative 'harvest_overtime/time_entry'
+require_relative 'harvest_overtime/time_stats'
 require_relative 'harvest_overtime/business_days_computer'
 require_relative 'harvest_overtime/harvest_client'
 

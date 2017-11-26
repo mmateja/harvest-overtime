@@ -8,7 +8,8 @@ Gem::Specification.new do |s|
   s.description = 'Simple command-line tool for tracking overtime in Harvest'
   s.author      = 'Marek Mateja'
   s.email       = 'matejowy@gmail.com'
-  s.files       = %w[lib/harvest_overtime.rb lib/harvest_overtime/structs.rb lib/harvest_overtime/harvest_client.rb
+  s.files       = %w[lib/harvest_overtime.rb lib/harvest_overtime/month.rb lib/harvest_overtime/time_entry.rb
+                     lib/harvest_overtime/time_stats.rb lib/harvest_overtime/harvest_client.rb
                      lib/harvest_overtime/business_days_computer.rb]
   s.homepage    = 'https://github.com/mmateja/harvest_overtime'
   s.license     = 'ISC'
