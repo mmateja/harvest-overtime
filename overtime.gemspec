@@ -2,8 +2,8 @@
 
 Gem::Specification.new do |s|
   s.name        = 'harvest_overtime'
-  s.version     = '1.0.0'
-  s.date        = '2017-11-22'
+  s.version     = '1.0.1'
+  s.date        = '2017-11-26'
   s.summary     = 'Keep track of your billed hours in Harvest!'
   s.description = 'Simple command-line tool for tracking overtime in Harvest'
   s.author      = 'Marek Mateja'
